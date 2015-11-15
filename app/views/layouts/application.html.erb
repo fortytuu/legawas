@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Legawas</title>
+  <title>Lega...was</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class='application--header'>
+		Header
+	</div>
 
-<%= yield %>
+	<div class='application--content'>
+		<%= yield %>
+	</div>
 
+	<div class='application--footer'>
+		Footer :)
+	</div>
 </body>
 </html>
