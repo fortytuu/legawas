@@ -1,3 +1,3 @@
 Lega...was
 
-a learning app
+a learning app.
