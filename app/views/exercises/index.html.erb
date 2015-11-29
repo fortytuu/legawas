@@ -1,0 +1,10 @@
+<h1><%= @category.description %></h1>
+<% if @spelling_task.present? %>
+	<div><%= @spelling_task.fill_in_text %></div>
+	<% @category.response_options.each do |response_option| %>
+		<%= button_to(response_option, '#') %>
+	<% end %>
+<% end %>
+
+<%= @task_ids.inspect %>
+<%= session[:current_task_index] %>

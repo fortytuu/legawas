@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122114945) do
+ActiveRecord::Schema.define(version: 20151128133056) do
 
   create_table "categories", force: true do |t|
     t.integer  "topic_id"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20151122114945) do
     t.text     "response_options"
     t.text     "description"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spelling_tasks", force: true do |t|
+    t.integer  "category_id"
+    t.text     "solution_text"
+    t.text     "fill_in_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
