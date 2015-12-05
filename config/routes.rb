@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :topics, only: [:show] do 
   	resources :categories, only: [:show] do
-  		resources :exercises, only: [:index] 
+  		resources :exercises, only: [:show, :create] 
   	end
   end
 end
