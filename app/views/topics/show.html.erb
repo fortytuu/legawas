@@ -1,6 +1,0 @@
-<h1><%= @topic.title %></h1>
-<p><%= @topic.description %></p>
-
-<% @topic.categories.each do |category| %>
-	<%= link_to(category.short_title, topic_category_path(@topic, category)) %>
-<% end %>

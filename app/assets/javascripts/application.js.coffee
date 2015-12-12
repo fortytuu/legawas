@@ -6,6 +6,7 @@
 #= require backbone
 #= require bootstrap-sprockets
 #= require components/task/task
+#= require components/category/category
 
 
 class @Application

@@ -1,0 +1,4 @@
+.jumbotron
+	%h1= @category.title
+	%p= @category.description
+	= button_to('Start', topic_category_exercises_path(@category.topic, @category), method: :post, class: 'js--reset-session-storage btn btn-lg btn-primary')

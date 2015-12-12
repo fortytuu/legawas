@@ -1,0 +1,5 @@
+.jumbotron
+	%h1 Lega...was
+	%p Willkommenstext...
+	- @topics.each do |topic|
+		%a.btn.btn-primary.btn-lg{:href => topic_path(topic)}= topic.title

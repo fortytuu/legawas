@@ -1,9 +1,32 @@
 class Application.Components.Task.TaskView extends Backbone.View
 	events: 
-		'click .js--click': 'check'
+		'click .js--check': 'check'
 
-	initialize: -> 
-		console.log 'Hallo'
+	initialize: ->
+		$('[data-toggle="popover"]').popover()
 
 	check: (event) => 
-		console.log event
+		@$('.js--check').addClass('disabled')
+		$target = $(event.target)
+		$target.removeClass('disabled')
+		if $target.hasClass('is-true')
+			$target.addClass('btn-success')
+			@incrementSessionStorage('success-score')
+		else
+			$target.addClass('btn-danger')
+			@$('.is-true').addClass('btn-success')
+			@incrementSessionStorage('failure-score')
+
+		@$('.js--next').fadeIn()
+		@showScore() if @$('.js--score')?
+		@$('.js--fill-in-text').hide()
+		@$('.js--solution-text').fadeIn()
+
+	showScore: ->
+		@$('.js--success-score').html("Richtig #{window.sessionStorage.getItem('success-score')}")
+		@$('.js--failure-score').html("Weniger Richtig #{window.sessionStorage.getItem('failure-score')}")
+		@$('.js--score').fadeIn()
+
+	incrementSessionStorage: (key) ->
+		score = window.sessionStorage.getItem(key)
+		window.sessionStorage.setItem(key, parseInt(score) + 1)

@@ -1,0 +1,7 @@
+.jumbotron
+	%h1= @topic.title
+	%p= @topic.description
+
+- @topic.categories.each do |category|
+	%a.btn.btn-lg.btn-primary{href: topic_category_path(@topic, category)}
+		= category.short_title
