@@ -8,7 +8,6 @@ class Application.Components.Task.TaskView extends Backbone.View
 	check: (event) => 
 		@$('.js--check').addClass('disabled')
 		$target = $(event.target)
-		$target.removeClass('disabled')
 		if $target.hasClass('is-true')
 			$target.addClass('btn-success')
 			@incrementSessionStorage('success-score')
@@ -23,8 +22,8 @@ class Application.Components.Task.TaskView extends Backbone.View
 		@$('.js--solution-text').fadeIn()
 
 	showScore: ->
-		@$('.js--success-score').html("Richtig #{window.sessionStorage.getItem('success-score')}")
-		@$('.js--failure-score').html("Weniger Richtig #{window.sessionStorage.getItem('failure-score')}")
+		@$('.js--success-score').html("Richtig: #{window.sessionStorage.getItem('success-score')}")
+		@$('.js--failure-score').html("Noch üben: #{window.sessionStorage.getItem('failure-score')}")
 		@$('.js--score').fadeIn()
 
 	incrementSessionStorage: (key) ->
