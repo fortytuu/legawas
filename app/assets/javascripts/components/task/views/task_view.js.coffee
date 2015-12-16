@@ -17,7 +17,7 @@ class Application.Components.Task.TaskView extends Backbone.View
 			@incrementSessionStorage('failure-score')
 
 		@$('.js--next').fadeIn()
-		@showScore() if @$('.js--score')?
+		@showScore() if @$('.js--score').length
 		@$('.js--fill-in-text').hide()
 		@$('.js--solution-text').fadeIn()
 

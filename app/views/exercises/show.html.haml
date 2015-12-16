@@ -9,8 +9,9 @@
       %a.btn.btn-lg.btn-default.js--next{style: 'display:none', href:topic_category_exercise_path(@category.topic, @category, @next_task_index)} Weiter
     - else
       %a.btn.btn-lg.btn-default.js--next.is-complete{style: 'display:none', href: topic_path(@category.topic)} Zurück zur Übersicht
-      %p <br>
-      %p <br>
+      %p 
+        %br
+        %br
       .js--score{style: "display:none"}
         %h4.js--success-score
         %h4.js--failure-score
