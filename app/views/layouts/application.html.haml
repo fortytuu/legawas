@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Lega...was
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    .application--header
+      = render 'layouts/navigation'
+    .container.application--content
+      - if notice
+        %p.alert.alert-success= notice
+      - if alert
+        %p.alert.alert-danger= alert
+      = yield
+    .application--footer
