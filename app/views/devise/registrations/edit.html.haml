@@ -1,10 +1,10 @@
 %h1 Einstellungen
+= devise_error_messages!
 .col-md-4
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: 'form-inline') do |f|
     %h2 Account bearbeiten
-    = devise_error_messages!
     .form-group
-      .label{for: :username} Username
+      .label Username
       = f.text_field :username, autofocus: true, placeholder: 'Username', title: 'Gib deinen Username an.', class: 'form-control'
     .form-group
       .label E-Mail Adresse
