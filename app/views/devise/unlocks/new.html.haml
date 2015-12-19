@@ -1,0 +1,10 @@
+%h2 Freischaltung
+= devise_error_messages!
+.col-md-4
+	%p Instruktionen für die Freischaltung noch einmal senden.
+	= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+	  .form-group
+      .label E-Mail
+	    = f.email_field :email, autofocus: true, class: 'form-control'
+	  .actions
+	    = f.submit 'Senden', class: 'btn btn-primary'
