@@ -9,6 +9,7 @@
 
 #= require components/task/task
 #= require components/category/category
+#= require components/role/role
 
 class @Application
 

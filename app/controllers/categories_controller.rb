@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
+	load_and_authorize_resource
+
 	def show
-		@category = Category.find(params[:id])
 		session[:task_ids] = nil
 		session[:current_task_index] = nil
 	end

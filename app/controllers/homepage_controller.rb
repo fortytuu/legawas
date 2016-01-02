@@ -1,5 +1,6 @@
 class HomepageController < ApplicationController
+	load_resource :topic, parent: false
+
 	def index
-		@topics = Topic.all
 	end
 end

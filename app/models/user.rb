@@ -3,4 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  ROLES = %w[admin therapist teacher]
+  serialize :roles, Array 
+
+  def is?(role)
+  	roles.include?(role)
+  end
 end
