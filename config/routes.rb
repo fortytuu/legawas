@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   	end
   end
 
+  get 'new_entries'   => 'new_entries_form#new'
+
   # API
   namespace :api, defaults: {format: 'json'} do
   	resources :user_roles, only: [:update]

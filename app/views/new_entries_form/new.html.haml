@@ -1,0 +1,31 @@
+%form.form-horizontal
+  %fieldset
+    
+    %legend Form Name
+    
+    .form-group
+      %label.col-md-4.control-label{:for => "selectbasic"} Thema
+      .col-md-4
+        %select#selectbasic.form-control{:name => "selectbasic"}
+          %option{:value => "1"} Deutsch
+          %option{:value => "2"} Mathe
+    
+    .form-group
+      %label.col-md-4.control-label{:for => "Kategorie"} Kategorie
+      .col-md-4
+        %select#Kategorie.form-control{:name => "Kategorie"}
+          %option{:value => "1"} s/ss/ß
+          %option{:value => "2"} i/ie
+          %option{:value => "3"} e/ä, eu/äu
+          %option{:value => "4"} stummes h
+    
+    .form-group
+      %label.col-md-4.control-label{:for => "fill_in_text"} Lückenwort
+      .col-md-4
+        %input#fill_in_text.form-control.input-md{:name => "fill_in_text", :placeholder => "Beisp__l", :required => "", :type => "text"}/
+        %span.help-block Die Lücke sollte immer aus zwei Unterstrichen bestehen.
+    
+    .form-group
+      %label.col-md-4.control-label{:for => "solution_text"} Lösung
+      .col-md-4
+        %input#solution_text.form-control.input-md{:name => "solution_text", :placeholder => "Beispiel", :required => "", :type => "text"}
