@@ -1,0 +1,17 @@
+class Application.Components.Category.CategoryView extends Backbone.View
+	events: 
+		'change .js--select': 'select'
+
+	select: (event) =>
+		$target = $(event.currentTarget)
+		categoryId = $target.val()
+
+		$.ajax(
+			url: "/api/category_spelling_tasks/#{categoryId}",
+			type: 'GET',
+			dataType: 'json'
+		).done (response) =>
+			@$('.js--spelling-tasks').html('')
+			_.each response.spelling_tasks, (spelling_task) =>
+				@$('.js--spelling-tasks').append("<div>#{spelling_task['solution_text']}</div>")
+			
