@@ -1,4 +1,4 @@
-class Application.Components.Category.CategoryView extends Backbone.View
+class Application.Components.Category.Views.CategoryView extends Backbone.View
 	events: 
 		'change .js--select': 'select'
 
@@ -13,5 +13,6 @@ class Application.Components.Category.CategoryView extends Backbone.View
 		).done (response) =>
 			@$('.js--spelling-tasks').html('')
 			_.each response.spelling_tasks, (spelling_task) =>
-				@$('.js--spelling-tasks').append("<div>#{spelling_task['solution_text']}</div>")
+				view = new Application.Components.SpellingTask.Views.SpellingTaskView(spelling_task)
+				@$('.js--spelling-tasks').append(view.render().el)
 			

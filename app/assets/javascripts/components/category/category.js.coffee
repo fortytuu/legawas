@@ -8,7 +8,7 @@ Application.Components.Category = {
 
 $ ->
 	$('.js--categories').each (index, element) -> 
-		new Application.Components.Category.CategoryView(el: element)
+		new Application.Components.Category.Views.CategoryView(el: element)
  
  	$('.js--reset-session-storage').click -> 
  		window.sessionStorage.setItem('success-score', 0)

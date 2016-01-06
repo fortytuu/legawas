@@ -10,7 +10,7 @@
             - @topic.categories.each do |category|
               %option{:value => category.id}= category.short_title
 
-      .js--spelling-tasks
+      %table.table.js--spelling-tasks
       
     / .form-group
     /   %label.col-md-4.control-label{:for => "fill_in_text"} Lückenwort
