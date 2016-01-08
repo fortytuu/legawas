@@ -7,6 +7,7 @@ Application.Components.Category = {
 }
 
 $ ->
+	view = null
 	$('.js--categories').each (index, element) -> 
 		new Application.Components.Category.Views.CategoryView(el: element)
  

@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
   	resources :user_roles, only: [:update]
     resources :category_spelling_tasks, only: [:show]
+    resources :spelling_tasks, only: [:destroy]
   end
 end

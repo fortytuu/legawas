@@ -6,18 +6,24 @@ class Application.Components.SpellingTask.Views.SpellingTaskView extends Applica
 		@template = _.template("
 				<td><%= solution_text %></td>
 				<td><%=fill_in_text %></td>
-				<td><button class='js--remove' data-id='<%= id %>'>Löschen</button></td>
+				<td><button class='js--destroy' data-id='<%= id %>'>Löschen</button></td>
 			")
 
 	getRenderData: =>
 		@attributes	
 
 	afterRender: =>
-		@$('.js--remove').on 'click', @remove
+		@$('.js--destroy').on 'click', @destroy
 
-	remove: (event) =>
+	destroy: (event) =>
 		event.preventDefault()
 		event.stopPropagation()
 		id = $(event.currentTarget).data('id')
-		console.log id
+		$.ajax(
+			url: "/api/spelling_tasks/#{id}"
+			type: 'DELETE'
+			dataType: 'json'
+		).done (response) => 
+			@remove()
+
 	

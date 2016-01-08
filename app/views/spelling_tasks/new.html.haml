@@ -7,6 +7,7 @@
         %label.col-md-4.control-label{:for => "category"} Kategorie
         .col-md-4
           %select#Kategorie.form-control.js--select{:name => "category"}
+            %option{value: ''} Bitte wählen...
             - @topic.categories.each do |category|
               %option{:value => category.id}= category.short_title
 
