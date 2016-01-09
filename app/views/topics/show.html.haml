@@ -5,3 +5,6 @@
 	- @topic.categories.each do |category|
 		%a.btn.btn-lg.btn-primary{href: topic_category_path(@topic, category)}
 			= category.short_title
+
+	- if current_user.is?('admin')
+		%a.btn.btn-warning.btn-lg{href: new_topic_spelling_task_path(@topic)} Aufgabe hinzufügen

@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :user_roles, only: [:index]
 
   resources :topics, only: [:show] do 
-  	resources :categories, only: [:show] do
+    resources :spelling_tasks, only: [:new]
+    resources :categories, only: [:show] do
   		resources :exercises, only: [:show, :create] 
   	end
   end
@@ -13,5 +14,7 @@ Rails.application.routes.draw do
   # API
   namespace :api, defaults: {format: 'json'} do
   	resources :user_roles, only: [:update]
+    resources :category_spelling_tasks, only: [:show]
+    resources :spelling_tasks, only: [:create, :destroy]
   end
 end

@@ -1,0 +1,30 @@
+%form.form-horizontal
+  %fieldset
+    
+    %legend Neues Wort hinzufügen
+    .js--categories
+      .form-group
+        %label.col-md-4.control-label{:for => "category"} Kategorie
+        .col-md-4
+          %select#Kategorie.form-control.js--select{:name => "category"}
+            %option{value: ''} Bitte wählen...
+            - @topic.categories.each do |category|
+              %option{:value => category.id}= category.short_title
+
+      %table.table.js--spelling-tasks
+      
+    / .form-group
+    /   %label.col-md-4.control-label{:for => "fill_in_text"} Lückenwort
+    /   .col-md-4
+    /     %input#fill_in_text.form-control.input-md{:name => "fill_in_text", :placeholder => "Beisp__l", :required => "", :type => "text"}/
+    /     %span.help-block Die Lücke sollte immer aus zwei Unterstrichen bestehen.
+    
+    / .form-group
+    /   %label.col-md-4.control-label{:for => "solution_text"} Lösung
+    /   .col-md-4
+    /     %input#solution_text.form-control.input-md{:name => "solution_text", :placeholder => "Beispiel", :required => "", :type => "text"}
+
+    / .form-group
+    /   %label.col-md-4.control-label{:for => "submit_new_spelling_task"} 
+    /   .col-md-4
+    /     %button#singlebutton.btn.btn-primary{:name => "submit_new_spelling_task"} Speichern

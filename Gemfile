@@ -19,3 +19,4 @@ gem 'autoprefixer-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'devise'
 gem 'cancancan'
+gem 'rails-i18n'
