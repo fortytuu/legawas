@@ -1,13 +1,13 @@
 module Api
 	class SpellingTasksController < ApiController
-		load_and_authorize_resource only: [:destroy]
+		load_and_authorize_resource only: [:create, :destroy]
 
 		def create
 			@spelling_task = SpellingTask.create(spelling_task_params)
 		end
 
 		def destroy
-			@spelling_task.delete
+			@spelling_task.destroy
 		end
 
 		private

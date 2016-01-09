@@ -21,8 +21,8 @@ class Application.Components.SpellingTask.Views.SpellingTaskView extends Applica
 		@attributes	
 
 	afterRender: =>
-		@$('.js--destroy').on 'click', @destroy
 		@$('.js--add').on 'click', @add
+		@$('.js--destroy').on 'click', @destroy
 
 	add: (event) =>
 		event.preventDefault()
@@ -62,5 +62,3 @@ class Application.Components.SpellingTask.Views.SpellingTaskView extends Applica
 			dataType: 'json'
 		).done (response) => 
 			@remove()
-
-	
