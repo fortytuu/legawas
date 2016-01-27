@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
 	before_filter :category
 
 	def create
-		@task_ids = @category.spelling_tasks.map(&:id).shuffle.take(5)
+		@task_ids = @category.spelling_tasks.map(&:id).shuffle.take(10)
 		session[:task_ids] = @task_ids
 
 		load_spelling_task

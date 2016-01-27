@@ -9,4 +9,5 @@
 	- if current_user.is?('admin')
 		%a.btn.btn-warning.btn-lg{href: new_topic_spelling_task_path(@topic)} Aufgaben bearbeiten
 
-%table.table.js--categories{data: {id: @topic.id}}
+- if current_user.is?('admin')
+	%table.table.js--categories{data: {id: @topic.id}}

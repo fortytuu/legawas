@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'haml-rails'
 gem 'backbone-on-rails'
 gem 'rails', '4.1.8'
-gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -20,3 +19,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'devise'
 gem 'cancancan'
 gem 'rails-i18n'
+
+group :development, :test do
+	gem 'sqlite3'
+end
+
+group :production do
+	gem 'pg'
+end
+
