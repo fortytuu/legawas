@@ -55,11 +55,11 @@ class Application.Components.Category.Views.CategoryView extends Application.Vie
 		).done (response) =>
 			@$('.js--error').remove()	
 			@$('.has-error').removeClass('has-error')
-			errorElement = "<div class='help-block js--error'><em>Bitte ausfüllen</em></div>"
+			errorElement = $("<em class='help-block js--error'></em>")
 			if response.errors
-				@$('.js--short-title').parent().addClass('has-error').append(errorElement) if response.errors.short_title
-				@$('.js--title').parent().addClass('has-error').append(errorElement) if response.errors.title
-				@$('.js--response-options').parent().addClass('has-error').append(errorElement) if response.errors.response_options
+				@$('.js--short-title').parent().addClass('has-error').append(errorElement.clone().html(response.errors.short_title[0])) if response.errors.short_title
+				@$('.js--title').parent().addClass('has-error').append(errorElement.clone().html(response.errors.title[0])) if response.errors.title
+				@$('.js--response-options').parent().addClass('has-error').append(errorElement.clone().html(response.errors.response_options[0])) if response.errors.response_options
 			else
 				@trigger 'add:category'
 	
