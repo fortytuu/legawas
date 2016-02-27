@@ -1,17 +1,22 @@
 - if @spelling_task.present?
-  .js--task
-    %h1.js--fill-in-text= @spelling_task.fill_in_text
-    %h1.js--solution-text{style: "display:none"}= @spelling_task.solution_text
+  .exercise.js--task
+    .progress
+      .progress-bar.progress-bar-success.js--progress{style: "width: #{@progress}%"}
+        = "#{@progress || 0}%"
+    %h1
+      .js--fill-in-text= @spelling_task.fill_in_text
+      .js--solution-text{style: "display:none"}= @spelling_task.solution_text
     - @category.response_options.each do |response_option|
       - correct = @spelling_task.fill_in_text.gsub('__', response_option).downcase == @spelling_task.solution_text.downcase
       %button.btn.btn-lg.btn-task.js--check{class: "is-#{correct}", data: {container: 'body', toggle: 'popover', placement: 'bottom', content: (correct ? 'Richtig :)' : 'Fast ;)')}}= response_option
-    - if @next_task_index.present?
-      %a.btn.btn-lg.btn-default.js--next{style: 'display:none', href:topic_category_exercise_path(@category.topic, @category, @next_task_index)} Weiter
-    - else
-      %a.btn.btn-lg.btn-default.js--next.is-complete{style: 'display:none', href: topic_path(@category.topic)} Zurück zur Übersicht
-      %p 
-        %br
-        %br
-      .js--score{style: "display:none"}
-        %h4.js--success-score
-        %h4.js--failure-score
+    .exercise--buttons
+      - if @next_task_index.present?
+        %a.btn.btn-lg.btn-default.has-full-width.js--next{style: 'display:none', href:topic_category_exercise_path(@category.topic, @category, @next_task_index)} Weiter
+      - else
+        %a.btn.btn-lg.btn-default.has-full-width.js--next.is-complete{style: 'display:none', href: topic_path(@category.topic)} Zurück zur Übersicht
+        %p 
+          %br
+          %br
+        .js--score{style: "display:none"}
+          %h4.js--success-score
+          %h4.js--failure-score

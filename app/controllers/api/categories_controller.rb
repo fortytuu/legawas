@@ -1,9 +1,13 @@
 module Api
 	class CategoriesController < ApiController
-		load_and_authorize_resource only: [:create, :destroy]
+		load_and_authorize_resource only: [:create, :destroy, :update]
 
 		def create
 			@category = Category.create(category_params)
+		end
+
+		def update
+			@category.update_attributes(category_params)
 		end
 
 		def destroy
@@ -13,7 +17,7 @@ module Api
 		private
 
 		def category_params
-			params.require(:category).permit(:topic_id, :short_title, :title, :description, :url, response_options: [])
+			params.require(:category).permit(:topic_id, :id, :short_title, :title, :description, :amount, :url, response_options: [])
 		end
 	end
 end

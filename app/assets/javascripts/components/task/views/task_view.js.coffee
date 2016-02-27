@@ -25,6 +25,7 @@ class Application.Components.Task.TaskView extends Backbone.View
 		@$('.js--success-score').html("Richtig: #{window.sessionStorage.getItem('success-score')}")
 		@$('.js--failure-score').html("Noch üben: #{window.sessionStorage.getItem('failure-score')}")
 		@$('.js--score').fadeIn()
+		@$('.js--progress').css('width', '100%').html('100%')
 		swal("Punkte", "Richtig: "+window.sessionStorage.getItem('success-score')+"\n"+"Noch üben: "+window.sessionStorage.getItem('failure-score'))
 
 

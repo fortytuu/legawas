@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     resources :category_spelling_tasks, only: [:show]
     resources :spelling_tasks, only: [:create, :destroy]
     resources :topic_categories, only: [:show]
-    resources :categories, only: [:create, :destroy]
+    resources :categories, only: [:create, :update, :destroy]
   end
 end

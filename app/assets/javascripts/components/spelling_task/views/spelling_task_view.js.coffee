@@ -42,13 +42,13 @@ class Application.Components.SpellingTask.Views.SpellingTaskView extends Applica
 		).done (response) =>
 			@$('.js--error').remove()	
 			@$('.has-error').removeClass('has-error')
-			errorElement = "<div class='help-block js--error'><em>Bitte ausfüllen</em></div>"
+			$errorElement = $("<em class='help-block js--error'></em>")
 			if response.errors
 				if response.errors.fill_in_text
-					@$('.js--fill-in-text').parent().addClass('has-error').append(errorElement)
+					@$('.js--fill-in-text').parent().addClass('has-error').append($errorElement.clone().html(response.errors.fill_in_text[0]))
 
 				if response.errors.solution_text
-					@$('.js--solution-text').parent().addClass('has-error').append(errorElement)
+					@$('.js--solution-text').parent().addClass('has-error').append($errorElement.clone().html(response.errors.solution_text[0]))
 			else
 				@trigger 'add:spellingTask'
 

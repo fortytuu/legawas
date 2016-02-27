@@ -10,7 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
@@ -18,17 +17,8 @@
 @import "bootstrap"
 @import "sweetalert"
 
-.btn
-	border-radius: 0px
-
-.btn-task
-	width: 80px
-
-.btn-warning
-	float: right
-
-.btn-default
-	margin-left: 20px
+@import "button"
+@import "components/exercise"
 
 .label
 	color: black
@@ -43,3 +33,6 @@
 
 .application--content
 	margin-bottom: 20px
+
+.has-error *
+	border-color: #a94442

@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
 	before_filter :category
 
 	def create
-		@task_ids = @category.spelling_tasks.map(&:id).shuffle.take(10)
+		@task_ids = @category.spelling_tasks.map(&:id).shuffle.take(@category.amount)
 		session[:task_ids] = @task_ids
 
 		load_spelling_task
@@ -13,10 +13,13 @@ class ExercisesController < ApplicationController
 	def show
 		@task_ids = session[:task_ids]
 		load_spelling_task
+
+		@progress = (100 * (@next_task_index - 1)) / @category.amount
 		
 		if @next_task_index == @task_ids.length
 			@next_task_index = nil
 		end
+
 	end
 
 	private
