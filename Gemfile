@@ -19,9 +19,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'devise'
 gem 'cancancan'
 gem 'rails-i18n'
+gem 'pg'
 
 group :development, :test do
-	gem 'sqlite3'
 end
 
 group :production do
