@@ -1,15 +1,15 @@
 module Api
-	class UserRolesController < ApiController
-		load_and_authorize_resource :user, parent: false
+  class UserRolesController < ApiController
+    load_and_authorize_resource :user, parent: false
 
-		def update
-			@user.update_attributes(update_params)
-		end
+    def update
+      @user.update_attributes(update_params)
+    end
 
-		private
+    private
 
-		def update_params
-			params.require(:user).permit(roles: [])
-		end
-	end
+    def update_params
+      params.require(:user).permit(roles: [])
+    end
+  end
 end

@@ -1,17 +1,17 @@
 .table-responsive
-	%table.table.table-striped.table-condensed
-		%tr
-			%th Username
-			%th E-Mail
-			%th Rolle
-			%th Erstellt am
-		- @users.each do |user|
-			%tr.js--user-role{data: {id: user.id}}
-				%td= user.username
-				%td= user.email
-				%td
-					- User::ROLES.each do |role|
-						.checkbox.js--check
-							%label
-								%input.js--role{type: 'checkbox', value: role, checked: user.is?(role) ? 'checked' : nil, disabled: current_user == user && role == 'admin'}= role.capitalize 
-				%td= user.created_at
+  %table.table.table-striped.table-condensed
+    %tr
+      %th Username
+      %th E-Mail
+      %th Rolle
+      %th Erstellt am
+    - @users.each do |user|
+      %tr.js--user-role{data: {id: user.id}}
+        %td= user.username
+        %td= user.email
+        %td
+          - User::ROLES.each do |role|
+            .checkbox.js--check
+              %label
+                %input.js--role{type: 'checkbox', value: role, checked: user.is?(role) ? 'checked' : nil, disabled: current_user == user && role == 'admin'}= role.capitalize 
+        %td= user.created_at

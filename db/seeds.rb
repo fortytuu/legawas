@@ -176,8 +176,8 @@ SpellingTask.all.destroy_all
 ['stummes h','zählen','zä__len'],
 ['stummes h','Zahn','Za__n'],
 ['stummes h','zehn','ze__n']].each do |sub_array|
-	category_id = Category.find_by(short_title: sub_array[0]).id
-	solution_text = sub_array[1]
-	fill_in_text = sub_array[2]
-	SpellingTask.create(category_id: category_id, solution_text: solution_text, fill_in_text: fill_in_text)
+  category_id = Category.find_by(short_title: sub_array[0]).id
+  solution_text = sub_array[1]
+  fill_in_text = sub_array[2]
+  SpellingTask.create(category_id: category_id, solution_text: solution_text, fill_in_text: fill_in_text)
 end

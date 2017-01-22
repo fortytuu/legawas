@@ -1,9 +1,9 @@
 module Api
-	class TopicCategoriesController < ApiController
-		load_and_authorize_resource :topic, parent: false
+  class TopicCategoriesController < ApiController
+    load_and_authorize_resource :topic, parent: false
 
-		def show
-			@categories = @topic.categories.order('lower(short_title)')
-		end
-	end
+    def show
+      @categories = @topic.categories.order('lower(short_title)')
+    end
+  end
 end

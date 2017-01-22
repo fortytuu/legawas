@@ -7,5 +7,5 @@ Application.Components.Role = {
 }
 
 $ ->
-	$('.js--user-role').each (index, element) -> 
-		new Application.Components.Role.UserRolesView(el: element)
+  $('.js--user-role').each (index, element) -> 
+    new Application.Components.Role.UserRolesView(el: element)

@@ -7,5 +7,5 @@ Application.Components.Task = {
 }
 
 $ ->
-	$('.js--task').each (index, element) -> 
-		new Application.Components.Task.TaskView(el: element)
+  $('.js--task').each (index, element) -> 
+    new Application.Components.Task.TaskView(el: element)

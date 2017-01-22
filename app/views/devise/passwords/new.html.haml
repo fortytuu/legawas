@@ -1,11 +1,11 @@
 %h1 Passwort vergessen?
 = devise_error_messages!
 .col-md-4
-	= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-		.form-group
-			.label E-Mail
-			= f.email_field :email, autofocus: true, class: 'form-control'
-		.actions
-			= f.submit 'Senden', class: 'btn btn-primary'
-		%p
-			Gib deine E-Mail-Adresse ein, klicke auf Senden und siehe dann in deinem E-Mail-Postfach nach :)
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    .form-group
+      .label E-Mail
+      = f.email_field :email, autofocus: true, class: 'form-control'
+    .actions
+      = f.submit 'Senden', class: 'btn btn-primary'
+    %p
+      Gib deine E-Mail-Adresse ein, klicke auf Senden und siehe dann in deinem E-Mail-Postfach nach :)

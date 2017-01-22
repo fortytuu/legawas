@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   serialize :roles, Array 
 
   def is?(role)
-  	roles.include?(role)
+    roles.include?(role)
   end
 end

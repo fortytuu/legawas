@@ -7,5 +7,5 @@ Application.Components.Topic = {
 }
 
 $ ->
-	$('.js--topic').each (index, element) ->
+  $('.js--topic').each (index, element) ->
     new Application.Components.Topic.Views.TopicsView(el: element)

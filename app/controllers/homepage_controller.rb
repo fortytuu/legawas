@@ -1,6 +1,6 @@
 class HomepageController < ApplicationController
-	load_resource :topic, parent: false
+  load_resource :topic, parent: false
 
-	def index
-	end
+  def index
+  end
 end
