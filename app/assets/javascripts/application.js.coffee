@@ -7,6 +7,7 @@
 #
 #= require_self
 #
+#= require components/topic/topic
 #= require components/task/task
 #= require components/category/category
 #= require components/role/role
@@ -69,4 +70,3 @@ class Application.View extends Backbone.View
 
   # Bind the remove method to the instance
   remove: => super
-

@@ -2,4 +2,7 @@
 	%h1 Lega...was?
 	%p Schön, dass du hier bist. <br>Damit hast du den wichtigsten Schritt schon geschafft: den Anfang. <br>Was möchtest du heute üben?
 	- @topics.each do |topic|
-		%a.btn.btn-primary.btn-lg{:href => topic_path(topic)}= topic.title
+		%a.btn.btn-primary.btn-lg{href: topic_path(topic)}= topic.title
+
+- if current_user.is?('admin')
+	%table.table.js--topic

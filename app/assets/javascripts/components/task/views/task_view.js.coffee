@@ -1,11 +1,11 @@
 class Application.Components.Task.TaskView extends Backbone.View
-	events: 
+	events:
 		'click .js--check': 'check'
 
 	initialize: ->
 		$('[data-toggle="popover"]').popover()
 
-	check: (event) => 
+	check: (event) =>
 		@$('.js--check').addClass('disabled')
 		$target = $(event.target)
 		if $target.hasClass('is-true')
@@ -26,7 +26,7 @@ class Application.Components.Task.TaskView extends Backbone.View
 		@$('.js--failure-score').html("Noch üben: #{window.sessionStorage.getItem('failure-score')}")
 		@$('.js--score').fadeIn()
 		@$('.js--progress').css('width', '100%').html('100%')
-		swal("Punkte", "Richtig: "+window.sessionStorage.getItem('success-score')+"\n"+"Noch üben: "+window.sessionStorage.getItem('failure-score'))
+		swal("Punkte", "Richtig: #{}" + window.sessionStorage.getItem('success-score') + "\n" + "Noch üben: " + window.sessionStorage.getItem('failure-score'))
 
 
 	incrementSessionStorage: (key) ->
