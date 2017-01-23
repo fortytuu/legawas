@@ -12,10 +12,11 @@ Topic.create(title: 'Mathe', description: 'Wähle einen Aufgabenbereich, den du 
 
 Category.all.destroy_all
 topic_id = Topic.find_by(title: 'Deutsch').id
-Category.create(topic_id: topic_id, short_title: 's/ss/ß', title: 'Die S-Laute (s, ss, ß)', response_options: ['s', 'ss', 'ß'], amount: 5)
-Category.create(topic_id: topic_id, short_title: 'i/ie', title: 'Die langen und kurzen i-Laute', response_options: ['i', 'ie'], amount: 5)
-Category.create(topic_id: topic_id, short_title: 'e/ä und eu/äu', title: 'Ableiten zur Unterscheidung zwischen e/ä und eu/äu', response_options: ['e', 'ä', 'eu', 'äu'], amount: 5)
-Category.create(topic_id: topic_id, short_title: 'stummes h', title: 'Das stumme H', response_options: ['h', 'kein h'], amount: 5)
+Category.create(topic_id: topic_id, short_title: 's/ss/ß', title: 'Die S-Laute (s, ss, ß)', response_options: [{name: "s", value: "s"}, {name: "ss", value: "ss"}, {name: "ß", value: "ß"}], amount: 5)
+Category.create(topic_id: topic_id, short_title: 'i/ie', title: 'Die langen und kurzen i-Laute', response_options: [{name: "i", value: "i"}, {name: "ie", value: "ie"}], amount: 5)
+Category.create(topic_id: topic_id, short_title: "e/ä", title: 'Ableiten zur Unterscheidung zwischen e und ä', response_options: [{name: "e", value: "e"}, {name: "ä", value: "ä"}], amount: 5)
+Category.create(topic_id: topic_id, short_title: "eu/äu", title: 'Ableiten zur Unterscheidung zwischen eu und äu', response_options: [{name: "eu", value: "eu"}, {name: "äu", value: "äu"}], amount: 5)
+Category.create(topic_id: topic_id, short_title: 'stummes h', title: 'Das stumme H', response_options: [{name: "h", value: "h"}, {name: "kein h", value: ""}], amount: 5)
 
 SpellingTask.all.destroy_all
 [['s/ss/ß','Ameise','Amei__e'],
@@ -125,13 +126,13 @@ SpellingTask.all.destroy_all
 ['i/ie','Spieß','Sp__ß'],
 ['i/ie','Wiese','W__se'],
 ['i/ie','wissen','w__ssen'],
-['e/ä und eu/äu','besser','b__sser'],
-['e/ä und eu/äu','Esel','__sel'],
-['e/ä und eu/äu','Kessel','K__ssel'],
-['e/ä und eu/äu','Messe','M__sse'],
-['e/ä und eu/äu','Messer','M__sser'],
-['e/ä und eu/äu','scheußlich','sch__ßlich'],
-['e/ä und eu/äu','Sessel','S__ssel'],
+['e/ä','besser','b__sser'],
+['e/ä','Esel','__sel'],
+['e/ä','Kessel','K__ssel'],
+['e/ä','Messe','M__sse'],
+['e/ä','Messer','M__sser'],
+['e/ä','Sessel','S__ssel'],
+['eu/äu','scheußlich','sch__ßlich'],
 ['stummes h','Bahn','Ba__n'],
 ['stummes h','belohnen','belo__nen'],
 ['stummes h','bezahlen','beza__len'],
@@ -142,12 +143,12 @@ SpellingTask.all.destroy_all
 ['stummes h','Fahrt','Fa__rt'],
 ['stummes h','fehlen','fe__len'],
 ['stummes h','Fehler','Fe__ler'],
-['stummes h','frählich','frä__lich'],
+['stummes h','fröhlich','frö__lich'],
 ['stummes h','fühlen','fü__len'],
 ['stummes h','führen','fü__ren'],
 ['stummes h','Gefahr','Gefa__r'],
 ['stummes h','gefährlich','gefä__rlich'],
-['stummes h','Hähle','Hä__le'],
+['stummes h','Höhle','Hö__le'],
 ['stummes h','Huhn','Hu__n'],
 ['stummes h','Jahr','Ja__r'],
 ['stummes h','kühl','kü__l'],
@@ -175,7 +176,12 @@ SpellingTask.all.destroy_all
 ['stummes h','Zahl','Za__l'],
 ['stummes h','zählen','zä__len'],
 ['stummes h','Zahn','Za__n'],
-['stummes h','zehn','ze__n']].each do |sub_array|
+['stummes h','zehn','ze__n'],
+['stummes h','Hase','Ha__se'],
+['stummes h','super','su__per'],
+['stummes h','Regen','Re__gen'],
+['stummes h','reden','re__den'],
+].each do |sub_array|
   category_id = Category.find_by(short_title: sub_array[0]).id
   solution_text = sub_array[1]
   fill_in_text = sub_array[2]

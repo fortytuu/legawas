@@ -16,7 +16,7 @@ gem 'autoprefixer-rails'
 # gem 'capistrano-rails', group: :development
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-gem 'devise'
+gem 'devise', "~> 4.0"
 gem 'cancancan'
 gem 'rails-i18n'
 gem 'pg'

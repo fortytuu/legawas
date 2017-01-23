@@ -7,14 +7,16 @@
       .js--fill-in-text= @spelling_task.fill_in_text
       .js--solution-text{style: "display:none"}= @spelling_task.solution_text
     - @category.response_options.each do |response_option|
-      - correct = @spelling_task.fill_in_text.gsub('__', response_option).downcase == @spelling_task.solution_text.downcase
-      %button.btn.btn-lg.btn-task.js--check{class: "is-#{correct}", data: {container: 'body', toggle: 'popover', placement: 'bottom', content: (correct ? 'Richtig :)' : 'Fast ;)')}}= response_option
+      - name = response_option[:name]
+      - value = response_option[:value]
+      - correct = @spelling_task.fill_in_text.gsub('__', value).downcase == @spelling_task.solution_text.downcase
+      %button.btn.btn-lg.btn-task.js--check{class: "is-#{correct}", data: {container: 'body', toggle: 'popover', placement: 'bottom', content: (correct ? 'Richtig :)' : 'Fast ;)')}}= name
     .exercise--buttons
       - if @next_task_index.present?
         %a.btn.btn-lg.btn-default.has-full-width.js--next{style: 'display:none', href:topic_category_exercise_path(@category.topic, @category, @next_task_index)} Weiter
       - else
         %a.btn.btn-lg.btn-default.has-full-width.js--next.is-complete{style: 'display:none', href: topic_path(@category.topic)} Zurück zur Übersicht
-        %p 
+        %p
           %br
           %br
         .js--score{style: "display:none"}
