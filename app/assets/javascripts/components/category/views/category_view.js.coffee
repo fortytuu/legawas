@@ -1,11 +1,11 @@
 class Application.Components.Category.Views.CategoryView extends Application.View
   tagName: 'tr'
 
-  events: 
+  events:
     'change .js--select': 'select'
 
   spellingTasksSelector: '.js--spelling-tasks'
-  
+
   initialize: (attributes) =>
     @attributes = attributes
     if @attributes?.state is 'is-new'
@@ -21,7 +21,7 @@ class Application.Components.Category.Views.CategoryView extends Application.Vie
       @template = _.template("
         <td><div contenteditable class='category-attribute js--short-title'><%= short_title %></div></td>
         <td><div contenteditable class='category-attribute js--title'><%= title %></div></td>
-        <td><div contenteditable class='category-attribute js--response-options'><%= response_options %></div></td>
+        <td><div class='category-attribute js--response-options'><%= response_options.map(function(o) { return o['name'] }).join() %></div></td>
         <td><div contenteditable class='category-attribute js--amount'><%= amount %></div></td>
         <td><div contenteditable class='category-attribute js--description'><%= description %></div></td>
         <td><button class='js--destroy btn btn-danger' data-id='<%= id %>'>Löschen</button></td>
@@ -29,7 +29,7 @@ class Application.Components.Category.Views.CategoryView extends Application.Vie
       ")
 
   getRenderData: =>
-    @attributes  
+    @attributes
 
   afterRender: =>
     @$('.js--save').on 'click', @save
@@ -45,11 +45,11 @@ class Application.Components.Category.Views.CategoryView extends Application.Vie
     amount = if type == 'topic' then @$('.js--amount').val() else @$('.js--amount').html()
     description = if type == 'topic' then @$('.js--description').val() else @$('.js--description').html()
     responseOptions = if type == 'topic' then @$('.js--response-options').val() else @$('.js--response-options').html()
-    
+
     url = if type == 'topic' then "/api/categories" else "/api/categories/#{id}"
 
     category = {}
-    category.topic_id = id if type == 'topic' 
+    category.topic_id = id if type == 'topic'
     category.short_title = shortTitle
     category.title = title
     category.amount = amount
@@ -60,11 +60,11 @@ class Application.Components.Category.Views.CategoryView extends Application.Vie
       url: url
       type: if type == 'topic' then 'POST' else 'PUT'
       dataType: 'json'
-      data: 
+      data:
         category: category
-          
+
     ).done (response) =>
-      @$('.js--error').remove()  
+      @$('.js--error').remove()
       @$('.has-error').removeClass('has-error')
       $errorElement = $("<em class='help-block js--error'></em>")
       if response.errors
@@ -74,14 +74,14 @@ class Application.Components.Category.Views.CategoryView extends Application.Vie
         @$('.js--amount').parent().addClass('has-error').append($errorElement.clone().html(response.errors.amount[0])) if response.errors.amount
       else
         @trigger 'add:category'
-  
+
   select: (event) =>
     $target = $(event.currentTarget)
     categoryId = $target.val()
     @$(@spellingTasksSelector).html('')
 
     return unless categoryId
-    
+
     view = new Application.Components.SpellingTask.Views.SpellingTaskView({id: categoryId, state: 'is-new'})
     @$(@spellingTasksSelector).append(view.render().el)
     @listenTo view, 'add:spellingTask', => @select(event)
@@ -94,14 +94,14 @@ class Application.Components.Category.Views.CategoryView extends Application.Vie
       _.each response.spelling_tasks, (spelling_task) =>
         view = new Application.Components.SpellingTask.Views.SpellingTaskView(spelling_task)
         @$(@spellingTasksSelector).append(view.render().el)
-  
+
   destroy: (event) =>
     event.preventDefault()
-    
+
     id = $(event.currentTarget).data('id')
     $.ajax(
       url: "/api/categories/#{id}"
       type: 'DELETE'
       dataType: 'json'
-    ).done (response) => 
+    ).done (response) =>
       @remove()
