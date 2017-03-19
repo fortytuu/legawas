@@ -1,0 +1,28 @@
+= form_for(@category, url: topic_category_path(@topic, @category)) do |form|
+  = form.label :title
+  = form.text_field :title
+
+  = form.label :short_title
+  = form.text_field :short_title
+
+  = form.label :description
+  = form.text_area :description
+
+  = form.label :amount
+  = form.text_field :amount
+
+  %hr
+  = form.fields_for :response_options do |option_fields|
+    - @category.response_options.each do |response_option|
+      = render "response_option", option_fields: option_fields, name: response_option[:name], value: response_option[:value]
+      %hr
+
+    - (2 - @category.response_options.size).times do
+      = render "response_option", option_fields: option_fields
+      %hr
+    = render "response_option", option_fields: option_fields
+    %hr
+
+  = form.submit "Speichern"
+
+%a{href: "#{topic_path(@topic)}"} Zurück zur Übersicht

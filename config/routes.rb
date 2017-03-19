@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :topics, only: [:show] do
     resources :spelling_tasks, only: [:new]
-    resources :categories, only: [:show] do
+    resources :categories, only: [:show, :edit, :update] do
       resources :exercises, only: [:show, :create]
     end
   end
