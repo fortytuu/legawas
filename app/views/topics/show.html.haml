@@ -8,7 +8,8 @@
 
   - if current_user.is?('admin')
     .admin--button
-      %a.btn.btn-warning.btn-lg{href: new_topic_spelling_task_path(@topic)} Aufgaben bearbeiten
+      %a.btn.btn-warning.btn-lg{href: new_topic_spelling_task_path(@topic)}
+        Aufgaben bearbeiten
 
 - if current_user.is?('admin')
   %table.table.js--categories{data: {id: @topic.id}}
